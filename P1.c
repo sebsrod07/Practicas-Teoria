@@ -19,6 +19,32 @@ void menuCadenas()
     }
 
 }
+void ImprimeSubsecuencias(char *s, int n, int k, int inicio, int *indices, int profundidad) {
+    if (profundidad == k) {
+        for (int i = 0; i < k; i++) {
+            printf("%c", s[indices[i]]);
+        }
+        printf("\n");
+        return;
+    }
+
+    // Recorremos desde 'inicio' hasta 'n' para elegir los caracteres sin repetir orden
+    for (int i = inicio; i < n; i++) {
+        indices[
+            profundidad] = i;
+        ImprimeSubsecuencias(s, n, k, i + 1, indices, profundidad + 1);
+    }
+}
+
+// Función principal que controla las longitudes (desde omitir pocos hasta omitir muchos)
+void Subsecuencias(char *s) {
+    int n = strlen(s);
+    int indices[100]; 
+
+    for (int k = 1; k <= n; k++) {
+        ImprimeSubsecuencias(s, n, k, 0, indices, 0);
+    }
+}
 void invertirCadena(char *cadena)
 {
     if (cadena == NULL) return;
@@ -49,8 +75,9 @@ void menuOpciones()
     printf("4. Generar prefijos\n");
     printf("5. Generar Sufijos\n");
     printf("6. Generar Subcadenas\n");
-    printf("7. Mostrar Cadenas\n");
-    printf("8. Salir\n");
+    printf("7. Generar Subsecuencias\n");
+    printf("8. Mostrar Cadenas\n");
+    printf("9. Salir\n");
     printf("Seleccione una opcion: ");
     scanf("%d", &opc);
     menuCadenas();
@@ -168,13 +195,23 @@ void menuOpciones()
         }
         case 7:
         {
+            printf("Inserte Cadena:\n");
+            scanf("%d", &C1);
+            C1--;
+            if(strlen(cadenas[C1])>12)
+            {
+                printf("No se puede realizar esta operacion para cadenas de longitud mayor a 12\n");
+                break;
+            }
+            Subsecuencias(cadenas[C1]);
+            break;
             
         }
-        case 7:
+        case 8:
         {
             break;
         }
-        case 8:
+        case 9:
         {
             printf("Saliendo del programa...\n");
             exit(0);
