@@ -1,5 +1,6 @@
 #include <stdio.h>
 #include <string.h>
+#include <stdlib.h>
 char cadenas [100][100] = {
     "AAAAAA","Hola"
 };
@@ -36,22 +37,33 @@ void invertirCadena(char *cadena)
     }
 
 }
-void menuOperaciones()
+
+void menuOpciones()
 {
+    system("cls");
     int opc;
     printf("Operaciones\n");
     printf("1. Concatenar\n");
     printf("2. Potencia Positiva o Negativa\n");
+    printf("3. Calcular longitud\n");
+    printf("4. Generar prefijos\n");
+    printf("5. Generar Sufijos\n");
+    printf("6. Generar Subcadenas\n");
+    printf("7. Mostrar Cadenas\n");
+    printf("8. Salir\n");
+    printf("Seleccione una opcion: ");
     scanf("%d", &opc);
     menuCadenas();
     switch(opc)
     {
         case 1:
-        {  
+        {
             printf("Inserte cadena 1:\n");
             scanf("%d", &C1);
             printf("Inserte cadena 2:\n");
             scanf("%d",&C2);
+            C1--;
+            C2--;
             strcpy(cadenas[HI],cadenas[C1]);
             strcat(cadenas[HI],cadenas[C2]);
             printf("Concatenacion: %s\n", cadenas[HI]);
@@ -63,6 +75,7 @@ void menuOperaciones()
             int p;
             printf("Inserte Cadena\n");
             scanf("%d", &C1);
+            C1--;
             printf("Inserte potencia\n");
             scanf("%d", &p);
             strcpy(aux,cadenas[C1]);
@@ -83,26 +96,13 @@ void menuOperaciones()
             break;
 
         }
-        
 
-    }
-    
-}
-void menuOpciones()
-{
-    int opc;
-    printf("Operaciones\n");
-    printf("1. Calcular longitud\n");
-    printf("2. Generar prefijos\n");
-    scanf("%d", &opc);
-    menuCadenas();
-    switch(opc)
-    {
-        case 1:
+        case 3:
         {
             int cont=0;
             printf("Inserte cadena 1:\n");
             scanf("%d", &C1);
+            C1--;
             char c=cadenas[C1][0];
             do
             {
@@ -113,10 +113,11 @@ void menuOpciones()
             printf("Longitud: %d\n", cont);
             break;
         }
-        case 2:
+        case 4:
         {
             printf("Inserte Cadena\n");
             scanf("%d", &C1);
+            C1--; 
             char c=cadenas[C1][0];
             int i=0;
             for(int i=0;i<=strlen(cadenas[C1]);i++)
@@ -130,11 +131,11 @@ void menuOpciones()
             break;
 
         }
-        case 3:
+        case 5:
         {
             printf("Inserte Cadena:\n");
             scanf("%d", &C1);
-            
+            C1--;
             int len = strlen(cadenas[C1]);
             for(int i = 0; i <= len; i++)
             {
@@ -146,11 +147,11 @@ void menuOpciones()
             }
             break;
         }
-        case 4:
+        case 6:
         {
             printf("Inserte Cadena:\n");
             scanf("%d", &C1);
-            
+            C1--;
             int len = strlen(cadenas[C1]);
             for(int i = 0; i < len; i++)
             {
@@ -165,16 +166,34 @@ void menuOpciones()
             }
             break;
         }
-        
-
+        case 7:
+        {
+            
+        }
+        case 7:
+        {
+            break;
+        }
+        case 8:
+        {
+            printf("Saliendo del programa...\n");
+            exit(0);
+        }
+        default:
+            printf("Opcion invalida. Intente de nuevo.\n");
+            break;
+    
     }
+    system("pause");
     
 }
 int main()
 {
-    menuOpciones();
-    menuCadenas();
-
+    while(1)
+    {
+        menuOpciones();
+    }
+    return 1;
 }
 
 
