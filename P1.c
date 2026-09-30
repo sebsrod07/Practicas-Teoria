@@ -20,28 +20,30 @@ void menuCadenas()
 
 }
 void ImprimeSubsecuencias(char *s, int n, int k, int inicio, int *indices, int profundidad) {
-    if (profundidad == k) {
-        for (int i = 0; i < k; i++) {
+    if (profundidad == k) 
+    {
+        for (int i = 0; i < k; i++) 
+        {
             printf("%c", s[indices[i]]);
         }
         printf("\n");
         return;
     }
-
-    // Recorremos desde 'inicio' hasta 'n' para elegir los caracteres sin repetir orden
-    for (int i = inicio; i < n; i++) {
+    for (int i = inicio; i < n; i++) 
+    {
         indices[
             profundidad] = i;
         ImprimeSubsecuencias(s, n, k, i + 1, indices, profundidad + 1);
     }
 }
 
-// Función principal que controla las longitudes (desde omitir pocos hasta omitir muchos)
+
 void Subsecuencias(char *s) {
     int n = strlen(s);
     int indices[100]; 
 
-    for (int k = 1; k <= n; k++) {
+    for (int k = 1; k <= n; k++) 
+    {
         ImprimeSubsecuencias(s, n, k, 0, indices, 0);
     }
 }
