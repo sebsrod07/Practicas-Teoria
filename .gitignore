@@ -1,0 +1,5 @@
+# Configuración de VS Code
+.vscode/
+
+# Archivos ejecutables de C
+*.exe
