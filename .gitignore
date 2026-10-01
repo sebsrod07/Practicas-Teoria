@@ -3,3 +3,5 @@
 
 # Archivos ejecutables de C
 *.exe
+#ARchivos de Texto
+*.txt
