@@ -1,6 +1,6 @@
 using System.Linq;
 
-class Program
+class P2
 {
     static void Main(string[] args)
     {
