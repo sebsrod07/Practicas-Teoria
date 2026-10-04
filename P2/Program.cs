@@ -89,9 +89,6 @@ class Program
         }
     }
 
-    /// <summary>
-    /// Lee un archivo CSV, separa por comas y retorna una List<string> limpia.
-    // </summary>
     static List<string> CargarLenguajeDesdeArchivo(string ruta, int numeroArchivo)
     {
         try
