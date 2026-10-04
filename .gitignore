@@ -1,7 +1,11 @@
-# Configuración de VS Code
+
 .vscode/
 
-# Archivos ejecutables de C
+
 *.exe
-#ARchivos de Texto
-*.txt
+
+*.sln
+*p2/.vscode/
+*p2/bin/
+*p2/obj/
+*p2/P2.csproj

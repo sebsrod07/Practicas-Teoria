@@ -86,7 +86,11 @@ void menuOpciones()
                 invertirCadena(aux);
                 p=p*-1;
             }
-                
+            else if(p==0)
+            {
+                printf("La potencia 0 es Cadena Vacia");
+                break;
+            }
             strcpy(cadenas[HI],aux);
             
             for(int i=0;i<p-1;i++)
@@ -202,11 +206,11 @@ void menuOpciones()
         }
         case 9:
         {
-            printf("Saliendo del programa...\n");
+            printf("Saliendo del programa\n");
             exit(0);
         }
         default:
-            printf("Opcion invalida. Intente de nuevo.\n");
+            printf("Opcion invalida\n");
             break;
     
     }
