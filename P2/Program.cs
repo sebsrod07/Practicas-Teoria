@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.IO;
-using System.Linq;
-
+﻿
 class Program
 {
     static async Task Main(string[] args)
@@ -15,7 +11,7 @@ class Program
         int Arch=1;
         while (true)
         {
-            Console.Write($"\nIntroduce la ruta del Archivo {Arch} (o presiona Enter para usar ruta por defecto con \"\\archivo.txt\"): ");
+            Console.Write($"\nIntroduce la ruta del Archivo {Arch} o presiona Enter para usar ruta por defecto con \"\\archivo.txt\": ");
             Console.WriteLine("Presione 0 para salir");
             string ruta = Console.ReadLine();
             Console.WriteLine($"RUTA: {ruta}, LENGUAJES.COUNT(): {lenguajes.Count()}");
@@ -95,7 +91,7 @@ class Program
         {
             if (!File.Exists(ruta))
             {
-                Console.WriteLine($"[Aviso] El archivo '{ruta}' no se encontró.");
+                Console.WriteLine($"El archivo '{ruta}' no se encontró.");
                 return null;
             }
 
@@ -106,12 +102,12 @@ class Program
                                               .Where(palabra => !string.IsNullOrEmpty(palabra))
                                               .ToList();
 
-            Console.WriteLine($"Archivo {numeroArchivo} cargado correctamente");
+            Console.WriteLine($"{ruta} cargada correctamente");
             return lenguaje;
         }
         catch (Exception ex)
         {
-            Console.WriteLine($"[Error] No se pudo leer el archivo: {ex.Message}");
+            Console.WriteLine($"No se pudo leer el archivo: {ex.Message}");
             return null;
         }
     }
@@ -243,8 +239,7 @@ class Program
 
     static void Estrella(List<List<string>> lenguajes)
     {
-        Console.WriteLine("\nCerradura de estrella");
-        Console.Write("Elige el lenguaje a operar (1, 2 o 3): ");
+        Console.Write("Seleccione el lenguaje: ");
         if (int.TryParse(Console.ReadLine(), out int i) && i<lenguajes.Count()&& i>0)
         {
             List<string> L = lenguajes[i - 1];
@@ -277,7 +272,6 @@ class Program
 
     static void Reflexion(List<List<string>> lenguajes)
     {
-        Console.WriteLine("\nReflexion del lengiaje");
         Console.Write("Seleccione el lenguaje: ");
         if (int.TryParse(Console.ReadLine(), out int i) && i<lenguajes.Count())
         {
