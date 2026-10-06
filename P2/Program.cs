@@ -1,5 +1,5 @@
 ﻿
-class Program
+class P2
 {
     static async Task Main(string[] args)
     {
@@ -11,7 +11,7 @@ class Program
         int Arch=1;
         while (true)
         {
-            Console.Write($"\nIntroduce la ruta del Archivo {Arch} o presiona Enter para usar ruta por defecto con \"\\archivo.txt\": ");
+            Console.Write($"\nIntroduce la ruta del Archivo {Arch} o presiona enter para usar ruta por defecto con \"\\archivo{{n}}.txt\": ");
             Console.WriteLine("Presione 0 para salir");
             string ruta = Console.ReadLine();
             Console.WriteLine($"RUTA: {ruta}, LENGUAJES.COUNT(): {lenguajes.Count()}");
@@ -25,7 +25,7 @@ class Program
                 ruta = $"archivo{Arch}.txt"; 
             }
 
-            lenguajeActual = CargarLenguajeDesdeArchivo(ruta,Arch);
+            lenguajeActual = cargarLenguajes(ruta);
             Arch++;
             if(lenguajeActual is null)
                 Arch--;
@@ -85,10 +85,16 @@ class Program
         }
     }
 
-    static List<string> CargarLenguajeDesdeArchivo(string ruta, int numeroArchivo)
+    static List<string> cargarLenguajes(string ruta)
     {
         try
         {
+            if(ruta=="0")
+
+            {
+                Console.WriteLine("Debe ingresar al menos un archivo en el programa");
+                return null;
+            }
             if (!File.Exists(ruta))
             {
                 Console.WriteLine($"El archivo '{ruta}' no se encontró.");
@@ -130,9 +136,9 @@ class Program
                 }
                 Console.WriteLine($"Lenguaje Resultante: {{ {string.Join(", ", resultado)} }}");
             }
-            else { Console.WriteLine("Índice inválido."); }
+            else { Console.WriteLine("Error"); }
         }
-        else { Console.WriteLine("Índice inválido."); }
+        else { Console.WriteLine("Error"); }
     }
 
     static void Concatenar(List<List<string>> lenguajes)
@@ -141,7 +147,7 @@ class Program
         if (int.TryParse(Console.ReadLine(), out int i) && i <= lenguajes.Count()&& i>0)
         {
             Console.Write("Seleccione el segundo lenguaje: ");
-            if (int.TryParse(Console.ReadLine(), out int j) && j <= lenguajes.Count())
+            if (int.TryParse(Console.ReadLine(), out int j) && j <= lenguajes.Count()&&j>0)
             {
                 List<string> L1 = lenguajes[i - 1];
                 List<string> L2 = lenguajes[j - 1];
@@ -153,9 +159,9 @@ class Program
 
                 Console.WriteLine($"Lenguaje Resultante: {{ {string.Join(", ", concatenacion)} }}");
             }
-            else { Console.WriteLine("Error, Intente de nuevo."); }
+            else { Console.WriteLine("Error"); }
         }
-        else { Console.WriteLine("Error, Intente de nuevo."); }
+        else { Console.WriteLine("Erro"); }
     }
 
     static void Potencias(List<List<string>> lenguajes)
@@ -203,7 +209,7 @@ class Program
             }
             else { Console.WriteLine("No es posible hacer la operacion con esa potencia"); }
         }
-        else { Console.WriteLine("Error, Intente de nuevo."); }
+        else { Console.WriteLine("Error"); }
     }
 
     static void Cerradura(List<List<string>> lenguajes)
@@ -234,7 +240,7 @@ class Program
 
             Console.WriteLine($"Resultado (L^+): {{ {string.Join(", ", resultado)} }}");
         }
-        else { Console.WriteLine("Error, Intente de nuevo."); }
+        else { Console.WriteLine("Error"); }
     }
 
     static void Estrella(List<List<string>> lenguajes)
@@ -267,7 +273,7 @@ class Program
 
             Console.WriteLine($"Resultado: {{ {string.Join(", ", resultado)} }}");
         }
-        else { Console.WriteLine("Error, Intente de nuevo."); }
+        else { Console.WriteLine("Error"); }
     }
 
     static void Reflexion(List<List<string>> lenguajes)
@@ -288,6 +294,6 @@ class Program
 
             Console.WriteLine($"Resultado{{ {string.Join(", ", resultado)} }}");
         }
-        else { Console.WriteLine("Error, Intente de nuevo."); }
+        else { Console.WriteLine("Error"); }
     }
 }
