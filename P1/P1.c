@@ -2,7 +2,7 @@
 #include <string.h>
 #include <stdlib.h>
 char cadenas [100][100] = {
-    "AAAAAA","Hola"
+    "azul","raton"
 };
 int C1,C2,HI;
 void menuCadenas()
@@ -51,7 +51,8 @@ void menuOpciones()
     printf("6. Generar Subcadenas\n");
     printf("7. Generar Subsecuencias\n");
     printf("8. Mostrar Cadenas\n");
-    printf("9. Salir\n");
+    printf("9. Agregar Cadena\n");
+    printf("10. Salir\n");
     printf("Seleccione una opcion: ");
     scanf("%d", &opc);
     menuCadenas();
@@ -206,6 +207,13 @@ void menuOpciones()
         }
         case 9:
         {
+            printf("Inserte nueva cadena:\n");
+            scanf("%s", cadenas[HI]);
+            break;
+        }
+
+        case 10:
+        {
             printf("Saliendo del programa\n");
             exit(0);
         }
@@ -225,5 +233,10 @@ int main()
     }
     return 1;
 }
+
+
+
+
+
 
 

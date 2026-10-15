@@ -1,5 +1,5 @@
 ﻿
-class Program
+class P2
 {
     static async Task Main(string[] args)
     {
@@ -34,8 +34,8 @@ class Program
         }
         
 
-        bool x = false;
-        while (!x)
+        bool x = true;
+        while (x)
         {
             Thread.Sleep(7000);
             // Console.Clear();
@@ -75,7 +75,7 @@ class Program
                     Reflexion(lenguajes);
                     break;
                 case "7":
-                    x = true;
+                    x = false;
                     Console.WriteLine("Saliendo del programa");
                     break;
                 default:
@@ -114,10 +114,10 @@ class Program
 
     static void Union(List<List<string>> lenguajes)
     {
-        Console.Write("Seleccione lenguaje: ");
+        Console.Write("Seleccione el primer lenguaje: ");
         if (int.TryParse(Console.ReadLine(), out int i) && i <= lenguajes.Count()&& i>0)
         {
-            Console.Write("Seleccione lenguaje: ");
+            Console.Write("Seleccione el segundo lenguaje: ");
             if (int.TryParse(Console.ReadLine(), out int j) && i <= lenguajes.Count()&& i>0 && j!=i)
             {
                 List<string> resultado = lenguajes[i - 1];
@@ -163,7 +163,7 @@ class Program
         Console.Write("Seleccione el lenguaje: ");
         if (int.TryParse(Console.ReadLine(), out int i) && i <= lenguajes.Count()&& i>0)
         {
-            Console.Write("Introduce la potencia n (-5 a 8): ");
+            Console.Write("Introduce la potencia: ");
             if (int.TryParse(Console.ReadLine(), out int n) && n >= -5 && n <= 8)
             {
                 List<string> L = lenguajes[i - 1];
