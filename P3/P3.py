@@ -8,9 +8,9 @@ def requestURLIB(url):
     return html
 
 def obtenerDatos(html):    
-    expresionCorreos = r'[\w._%+-][\w._%+-]+@[\w-]+\.[\w]{2,}'
+    expresionCorreos = r'[\w_%+-][\w._%+-]*@[\w-]+\.[\w{2,}][\.\w{2,}]*'
     expresionLinks = r'href=["\'](https?://[^\s"\']+)["\']'
-    expresionFechas = r'\b\d{1,2}[/-]\d{1,2}[/-]\d{2,4}|\d{4}[/-]\d{1,2}[/-]\d{1,2}\b'
+    expresionFechas = r'\d{1,2}[/-]\d{1,2}[/-]\d{2,4}|\d{4}[/-]\d{1,2}[/-]\d{1,2}'
 
     correos = re.findall(expresionCorreos, html)
     links = re.findall(expresionLinks, html)
@@ -19,7 +19,7 @@ def obtenerDatos(html):
     return correos, links, fechas
 
 
-# - - - - - MAIN - - - - - 
+# - - - - - MAIN - - - - 
 urls = []
 print("Puedes introducir 10 URLS, presiona 0 para salir\nIntroduce direcciones URL: ")
 for i in range(10):
