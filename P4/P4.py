@@ -3,7 +3,6 @@ import sys
 def cargar_automata(archivo):
     try:
         with open(archivo, 'r', encoding='utf-8') as f:
-            # Leer líneas ignorando comentarios y líneas vacías
             lineas = [line.strip() for line in f if line.strip() and not line.strip().startswith('//')]
             
         alfabeto = lineas[0].split()
@@ -13,20 +12,20 @@ def cargar_automata(archivo):
         num_estados_finales = int(lineas[4])
         estados_finales = lineas[5].split()
         
-        # Inicializar el diccionario de transiciones
+
         transiciones={}
         for estado in estados:
             transiciones[estado]={}
-            
-        # Cargar la función de transición
+        
+        estadoI=0
         for linea in lineas[6:]:
+            simbolo=0
             partes = linea.split()
-            if len(partes) == 3:
-                origen, simbolos, destino = partes
-                # Permitir múltiples símbolos separados por coma (ej. 0,1,2,3)
-                for simbolo in simbolos.split(','):
-                    transiciones[origen][simbolo] = destino
-                    
+            for destino in partes:
+                transiciones[estados[estadoI]][alfabeto[simbolo]]=destino
+                simbolo+=1
+            estadoI+=1
+            
         return alfabeto, estados, estado_inicial, estados_finales, transiciones
     
     except FileNotFoundError:
@@ -40,9 +39,9 @@ def evaluar_cadena(cadena, alfabeto, estado_inicial, estados_finales, transicion
     estado_actual = estado_inicial
     for simbolo in cadena:
         if simbolo not in alfabeto:
-            return False # Símbolo no pertenece al alfabeto
+            return False 
         if simbolo not in transiciones[estado_actual]:
-            return False # Estado de trampa implícito (no hay transición definida)
+            return False 
         estado_actual = transiciones[estado_actual][simbolo]
     
     return estado_actual in estados_finales
